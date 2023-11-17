@@ -1,0 +1,35 @@
+diff --git a/core/src/main/java/de/robv/android/xposed/XposedInit.java b/core/src/main/java/de/robv/android/xposed/XposedInit.java
+index 6cd49140..17ee9913 100644
+--- a/core/src/main/java/de/robv/android/xposed/XposedInit.java
++++ b/core/src/main/java/de/robv/android/xposed/XposedInit.java
+@@ -260,7 +260,7 @@ public final class XposedInit {
+         var count = 0;
+         for (var moduleClassName : moduleClassNames) {
+             try {
+-                Log.i(TAG, "  Loading class " + moduleClassName);
++                // Log.i(TAG, "  Loading class " + moduleClassName);
+ 
+                 Class<?> moduleClass = mcl.loadClass(moduleClassName);
+ 
+@@ -301,7 +301,7 @@ public final class XposedInit {
+      * in <code>assets/xposed_init</code>.
+      */
+     private static boolean loadModule(String name, String apk, PreLoadedApk file) {
+-        Log.i(TAG, "Loading legacy module " + name + " from " + apk);
++        // Log.i(TAG, "Loading legacy module " + name + " from " + apk);
+ 
+         var sb = new StringBuilder();
+         var abis = Process.is64Bit() ? Build.SUPPORTED_64_BIT_ABIS : Build.SUPPORTED_32_BIT_ABIS;
+diff --git a/daemon/src/main/jni/logcat.cpp b/daemon/src/main/jni/logcat.cpp
+index 1dffc263..11ecc7f0 100644
+--- a/daemon/src/main/jni/logcat.cpp
++++ b/daemon/src/main/jni/logcat.cpp
+@@ -292,7 +292,7 @@ void Logcat::Run() {
+     RefreshFd(true);
+     RefreshFd(false);
+ 
+-    EnsureLogWatchDog();
++    // EnsureLogWatchDog();
+ 
+     while (true) {
+         std::unique_ptr<logger_list, decltype(&android_logger_list_free)> logger_list{

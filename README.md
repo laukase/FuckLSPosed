@@ -1,0 +1,2 @@
+# FuckLSPosed
+FuckLSPosed
